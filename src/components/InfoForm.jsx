@@ -78,12 +78,12 @@ const InfoForm = ({ selectedInstructor }) => {
     fetchData();
   }, []);
   const optionsSubject = subjectData.map((item) => ({
-    value: item["Subject code"],
-    label: item["Subject name"],
-  }));
-  const optionsSubjectCode = subjectData.map((item) => ({
     value: item["Subject name"],
     label: item["Subject code"],
+  }));
+  const optionsSubjectCode = subjectData.map((item) => ({
+    value: item["Subject code"],
+    label: item["Subject name"],
   }));
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -199,12 +199,29 @@ const InfoForm = ({ selectedInstructor }) => {
       </div>
 
       <div className="flex mb-4">
+        <div className="w-1/2 ml-2">
+          <label
+            htmlFor="courseCode"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            Course Name
+          </label>
+          <Select
+            className="text-black"
+            isMulti
+            options={optionsSubjectCode}
+            value={optionsSubjectCode.filter((option) =>
+              instructorsInfo.courseCode.includes(option.value)
+            )}
+            onChange={handleCourseCodeChange}
+          />
+        </div>
         <div className="w-1/2 mr-2">
           <label
             htmlFor="course"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            Course Name
+            Course Code
           </label>
           <Select
             className="text-black"
@@ -215,24 +232,6 @@ const InfoForm = ({ selectedInstructor }) => {
             )}
 
             onChange={handleCourseChange}
-          />
-        </div>
-
-        <div className="w-1/2 ml-2">
-          <label
-            htmlFor="courseCode"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Course Code
-          </label>
-          <Select
-            className="text-black"
-            isMulti
-            options={optionsSubjectCode}
-            value={optionsSubjectCode.filter((option) =>
-              instructorsInfo.courseCode.includes(option.value)
-            )}
-            onChange={handleCourseCodeChange}
           />
         </div>
       </div>
