@@ -199,7 +199,7 @@ const InfoForm = ({ selectedInstructor }) => {
       </div>
 
       <div className="flex mb-4">
-        <div className="w-1/2 ml-2">
+        <div className="w-1/2 mr-2">
           <label
             htmlFor="courseCode"
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -216,7 +216,8 @@ const InfoForm = ({ selectedInstructor }) => {
             onChange={handleCourseCodeChange}
           />
         </div>
-        <div className="w-1/2 mr-2">
+
+        <div className="w-1/2 ml-2">
           <label
             htmlFor="course"
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -230,10 +231,10 @@ const InfoForm = ({ selectedInstructor }) => {
             value={optionsSubject.filter((option) =>
               instructorsInfo.course.includes(option.value)
             )}
-
             onChange={handleCourseChange}
           />
         </div>
+
       </div>
       <div className="flex justify-center pt-10">
         <button
