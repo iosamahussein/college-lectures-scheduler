@@ -38,7 +38,7 @@ const InstructorsTable  = ({ api }) => {
       }
     };
     fetchData();
-  }, [api]);
+  }, [api, deleteStatus]);
 
   const head_table = [
     "name",
