@@ -1,10 +1,12 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import '../../styles/globals.css';
+import React, { useState, useEffect } from "react";
+import "../../styles/globals.css";
 
 const SettingsPage = () => {
   const [theme, setTheme] = useState(() => {
-    return typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light';
+    return typeof window !== "undefined"
+      ? localStorage.getItem("theme") || "light"
+      : "light";
   });
   const [notifications, setNotifications] = useState(true);
   const [selectedTheme, setSelectedTheme] = useState(theme);
@@ -14,25 +16,25 @@ const SettingsPage = () => {
   }, [theme]);
 
   const applyTheme = (newTheme) => {
-    if (newTheme === 'dark') {
-      document.body.classList.add('dark-theme');
-      const container = document.getElementById('container');
+    if (newTheme === "dark") {
+      document.body.classList.add("dark-theme");
+      const container = document.getElementById("container");
       if (container) {
-        container.classList.add('dark-theme');
+        container.classList.add("dark-theme");
       }
-      const child = document.getElementById('child');
+      const child = document.getElementById("child");
       if (child) {
-        child.classList.add('dark-theme');
+        child.classList.add("dark-theme");
       }
     } else {
-      document.body.classList.remove('dark-theme');
-      const container = document.getElementById('container');
+      document.body.classList.remove("dark-theme");
+      const container = document.getElementById("container");
       if (container) {
-        container.classList.remove('dark-theme');
+        container.classList.remove("dark-theme");
       }
-      const child = document.getElementById('child');
+      const child = document.getElementById("child");
       if (child) {
-        child.classList.remove('dark-theme');
+        child.classList.remove("dark-theme");
       }
     }
   };
@@ -45,15 +47,18 @@ const SettingsPage = () => {
 
   const handleSave = () => {
     applyTheme(selectedTheme);
-    localStorage.setItem('theme', selectedTheme);
-    setTheme(selectedTheme); 
+    localStorage.setItem("theme", selectedTheme);
+    setTheme(selectedTheme);
   };
 
   return (
-    <div id='container' className="container mx-auto pt-20 p-6 mt-4 rounded-lg bg-white shadow-md">
+    <div
+      id="container"
+      className="container mx-auto pt-20 p-6 mt-4 rounded-lg bg-white shadow-md"
+    >
       <h1 className="text-2xl font-bold mb-4">Settings</h1>
 
-      <div id='child' className="bg-white p-6 rounded-lg shadow-md">
+      <div id="child" className="bg-white p-6 rounded-lg shadow-md">
         <div className="mb-4">
           <h2 className="text-xl font-semibold mb-2">Theme</h2>
           <div>

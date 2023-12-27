@@ -63,7 +63,7 @@ const Sidebar = ({ setLogoutMessage }) => {
             <div
               key={index}
               className="flex items-center rounded-lg transition-all p-2 duration-300 text-white mb-4 cursor-pointer hover:scale-105 group-hover:bg-gray-700 "
-              onClick={item.handleClick || (() => { })}
+              onClick={item.handleClick || (() => {})}
             >
               <Link href={item.link}>
                 <span className="mr-1">{item.icon}</span>

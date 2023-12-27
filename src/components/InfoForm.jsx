@@ -26,8 +26,6 @@ const InfoForm = ({ selectedInstructor }) => {
     { value: "Thursday", label: "Thursday" },
   ];
 
-
-
   const handleCourseCodeChange = (selectedOptions) => {
     setInstructorsInfo((prevInfo) => ({
       ...prevInfo,
@@ -70,8 +68,7 @@ const InfoForm = ({ selectedInstructor }) => {
         if (result.data !== undefined) {
           setSubjectData(result.data);
         }
-      }
-      catch (error) {
+      } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
@@ -94,7 +91,8 @@ const InfoForm = ({ selectedInstructor }) => {
       }
     }
     try {
-      const api = (selectedInstructor == "Professor" ? "Professors" : "Engineers");
+      const api =
+        selectedInstructor == "Professor" ? "Professors" : "Engineers";
       const response = await fetch("/api/" + api, {
         method: "POST",
         headers: {
@@ -234,7 +232,6 @@ const InfoForm = ({ selectedInstructor }) => {
             onChange={handleCourseChange}
           />
         </div>
-
       </div>
       <div className="flex justify-center pt-10">
         <button
@@ -244,15 +241,16 @@ const InfoForm = ({ selectedInstructor }) => {
           Add
         </button>
       </div>
-      {status !== "" && (status === "Saved" ? (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 bg-green-500 text-white rounded-lg shadow-lg transition-opacity duration-300 opacity-80">
-          {status}
-        </div>
-      ) : (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 bg-red-500 text-white rounded-lg shadow-lg transition-opacity duration-300 opacity-80">
-          {status}
-        </div>
-      ))}
+      {status !== "" &&
+        (status === "Saved" ? (
+          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 bg-green-500 text-white rounded-lg shadow-lg transition-opacity duration-300 opacity-80">
+            {status}
+          </div>
+        ) : (
+          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 bg-red-500 text-white rounded-lg shadow-lg transition-opacity duration-300 opacity-80">
+            {status}
+          </div>
+        ))}
     </form>
   );
 };

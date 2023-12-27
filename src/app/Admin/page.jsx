@@ -13,8 +13,8 @@ export default function Page() {
     <main className="flex-1 h-screen">
       <div className="flex pt-20 justify-center items-center bg-white dark:bg-gray-800 px-4 py-4 shadow-md w-full ">
         <ul className="flex  cursor-pointer ml-10 pd-10 pg-black">
-          {list_Instructor.map((instructor) => (
-            <li className="mr-10">
+          {list_Instructor.map((instructor , index) => (
+            <li className="mr-10" key={index}>
               {instructor === selectedInstructor ? (
                 <a
                   className="text-green-200 border-b-2 border-green-500 pb-2"

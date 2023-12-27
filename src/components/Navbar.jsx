@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <header >
+    <header>
       <nav className="fixed bg-white z-50 w-screen">
         <div className="flex items-center justify-between px-3 py-2">
           <Link href="/">

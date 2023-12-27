@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
 
-const CustomModel = ({ prvData, isOpen, onClose, onSave, onRemove, selectedYear, selectedSemester }) => {
+const CustomModel = ({
+  prvData,
+  isOpen,
+  onClose,
+  onSave,
+  onRemove,
+  selectedYear,
+  selectedSemester,
+}) => {
   const [data, setData] = useState([]);
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
@@ -14,8 +22,7 @@ const CustomModel = ({ prvData, isOpen, onClose, onSave, onRemove, selectedYear,
       setSubject(prvData.subject);
       setType(prvData.type);
       setRoom(prvData.room);
-    }
-    else {
+    } else {
       setName("");
       setSubject("");
       setType("lecture");
@@ -39,7 +46,8 @@ const CustomModel = ({ prvData, isOpen, onClose, onSave, onRemove, selectedYear,
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const selectedCategory = (selectedYear + 2) + "Year_" + (selectedSemester + 1) + "Term";
+        const selectedCategory =
+          selectedYear + 2 + "Year_" + (selectedSemester + 1) + "Term";
         const response = await fetch(`/${selectedCategory}.json`);
         const data = await response.json();
 
@@ -55,7 +63,6 @@ const CustomModel = ({ prvData, isOpen, onClose, onSave, onRemove, selectedYear,
     value: item["Name"],
     label: item["Name"],
   }));
-
 
   const handleSave = () => {
     onSave({ name, subject, type, room });
@@ -78,8 +85,9 @@ const CustomModel = ({ prvData, isOpen, onClose, onSave, onRemove, selectedYear,
   };
   return (
     <div
-      className={`fixed inset-0 ${isOpen ? "block" : "hidden"
-        } text-gray-900 bg-opacity-50 bg-gray-900`}
+      className={`fixed inset-0 ${
+        isOpen ? "block" : "hidden"
+      } text-gray-900 bg-opacity-50 bg-gray-900`}
     >
       <div className="flex items-center justify-center h-screen">
         <div className="bg-white rounded-lg p-8 w-96">
@@ -94,13 +102,14 @@ const CustomModel = ({ prvData, isOpen, onClose, onSave, onRemove, selectedYear,
               <Select
                 id="selectedStaff"
                 options={optionsName}
-                value={optionsName.find((option) => option.value === name) || ""}
+                value={
+                  optionsName.find((option) => option.value === name) || ""
+                }
                 onChange={handleSelectName}
               />
             </label>
           </div>
           <div className="mb-4">
-
             <label
               htmlFor="subject"
               style={{ display: "block", marginTop: "10px" }}
@@ -113,7 +122,9 @@ const CustomModel = ({ prvData, isOpen, onClose, onSave, onRemove, selectedYear,
                 value: subject["Subject code"],
                 label: subject["Subject name"],
               }))}
-              value={optionsSubject.find((option) => option.label === subject) || ""}
+              value={
+                optionsSubject.find((option) => option.label === subject) || ""
+              }
               onChange={handleSelectSubject}
             />
           </div>
@@ -188,7 +199,7 @@ const CustomModel = ({ prvData, isOpen, onClose, onSave, onRemove, selectedYear,
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

@@ -7,37 +7,39 @@ import Sidebar from "@/components/Sidebar";
 export default function RootLayout({ children }) {
   const [logoutMessage, setLogoutMessage] = useState("");
   const [theme, setTheme] = useState(() => {
-    return typeof window !== 'undefined' ? localStorage.getItem('theme') || 'light' : 'light';
+    return typeof window !== "undefined"
+      ? localStorage.getItem("theme") || "light"
+      : "light";
   });
   useEffect(() => {
     applyTheme(theme);
   }, [theme]);
 
   const applyTheme = (newTheme) => {
-    if (newTheme === 'dark') {
-      document.body.classList.add('dark-theme');
-      const container = document.getElementById('container');
+    if (newTheme === "dark") {
+      document.body.classList.add("dark-theme");
+      const container = document.getElementById("container");
       if (container) {
-        container.classList.add('dark-theme');
+        container.classList.add("dark-theme");
       }
-      const child = document.getElementById('child');
+      const child = document.getElementById("child");
       if (child) {
-        child.classList.add('dark-theme');
+        child.classList.add("dark-theme");
       }
     } else {
-      document.body.classList.remove('dark-theme');
-      const container = document.getElementById('container');
+      document.body.classList.remove("dark-theme");
+      const container = document.getElementById("container");
       if (container) {
-        container.classList.remove('dark-theme');
+        container.classList.remove("dark-theme");
       }
-      const child = document.getElementById('child');
+      const child = document.getElementById("child");
       if (child) {
-        child.classList.remove('dark-theme');
+        child.classList.remove("dark-theme");
       }
     }
   };
   return (
-    <div >
+    <div>
       <Navbar />
       <div className="flex">
         <Sidebar className="h-full" setLogoutMessage={setLogoutMessage} />

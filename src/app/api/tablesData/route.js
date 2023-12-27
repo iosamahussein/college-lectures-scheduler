@@ -43,7 +43,7 @@ export async function POST(request) {
         }
         else {
             return NextResponse.json(
-                { success: false  , message: duplicate},
+                { success: false, message: duplicate },
                 { status: 200, headers: { "content-type": "application/json" } }
             );
 
